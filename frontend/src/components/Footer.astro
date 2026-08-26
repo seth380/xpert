@@ -1,6 +1,6 @@
 ---
 import Brand from './Brand.astro';
-import { navigation } from '../data/site';
+import { navigation, site } from '../data/site';
 ---
 
 <footer class="site-footer">
@@ -13,6 +13,7 @@ import { navigation } from '../data/site';
       <p class="eyebrow eyebrow--light">Explore</p>
       <ul class="footer-links">
         {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        <li><a href={site.clientPortalUrl} target="_blank" rel="noreferrer">Client login <span aria-hidden="true">↗</span></a></li>
       </ul>
     </div>
     <div>

@@ -185,6 +185,19 @@ h3 {
   color: var(--white);
 }
 
+.button--portal {
+  border-color: var(--forest);
+  background: transparent;
+  color: var(--forest);
+}
+
+.button--portal:hover,
+.button--portal:focus-visible {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--white);
+}
+
 .button--light {
   border-color: var(--cream);
   background: var(--cream);
@@ -249,6 +262,12 @@ h3 {
 
 .primary-nav {
   gap: 32px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .primary-nav ul {
@@ -542,6 +561,15 @@ h3 {
   font-weight: 900;
 }
 
+.check-list--dark li {
+  border-color: rgb(255 255 255 / 18%);
+  color: var(--white);
+}
+
+.check-list--dark li::before {
+  color: var(--amber);
+}
+
 .photo-placeholder {
   position: relative;
   min-height: 530px;
@@ -774,10 +802,17 @@ h3 {
   gap: 80px;
 }
 
+.page-hero__grid > *,
+.split-grid > *,
+.contact-grid > * {
+  min-width: 0;
+}
+
 .page-hero h1 {
   max-width: 850px;
   margin-bottom: 0;
   font-size: clamp(3.5rem, 7vw, 7rem);
+  overflow-wrap: anywhere;
 }
 
 .page-hero__copy {
@@ -1121,8 +1156,14 @@ h3 {
     gap: 20px;
   }
 
-  .primary-nav .button {
+  .header-actions {
+    display: grid;
     margin-top: 25px;
+    gap: 10px;
+  }
+
+  .primary-nav .button {
+    width: 100%;
   }
 
   .nav-toggle {
@@ -1207,6 +1248,10 @@ h3 {
 
   .hero h1 {
     font-size: clamp(3rem, 14vw, 4.6rem);
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
   }
 
   .hero__proof,

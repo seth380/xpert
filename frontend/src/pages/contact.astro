@@ -1,6 +1,13 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const nextSteps = [
+  { icon: '01', title: 'We review the fit', copy: 'We look at your products, order profile, service requirements, timeline, and the problems you want a new partner to solve.' },
+  { icon: '02', title: 'We clarify the operation', copy: 'If there is a potential fit, we identify the unknowns and schedule a focused discovery conversation with the right people.' },
+  { icon: '03', title: 'We define the path forward', copy: 'Both teams leave with clear next steps—whether that is deeper solution design, additional information, or an honest no-fit decision.' },
+];
 ---
 
 <SiteLayout title="Start a Conversation" description="Tell Xpert Fulfillment about your operation, order profile, service requirements, and current fulfillment challenges.">
@@ -49,6 +56,21 @@ import PageHero from '../components/PageHero.astro';
         </div>
         <p class="form-status" id="form-status">Preview only: submissions are disabled until secure lead routing and privacy requirements are approved.</p>
       </form>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading eyebrow="What happens next" title="A practical conversation, not a generic sales sequence." copy="The first step is to understand whether the operating requirements, expectations, and working relationship make sense for both teams." />
+      <div class="feature-list">
+        {nextSteps.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card__icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 </SiteLayout>

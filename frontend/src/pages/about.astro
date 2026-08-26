@@ -9,6 +9,13 @@ const values = [
   { icon: '02', title: 'Responsiveness', copy: 'Keep communication close to the people who understand the work.' },
   { icon: '03', title: 'Accountability', copy: 'Make ownership clear, especially when something needs attention.' },
 ];
+
+const workingPrinciples = [
+  'Listen closely before prescribing a workflow',
+  'Put operating requirements and ownership in writing',
+  'Communicate directly when an exception needs attention',
+  'Improve the process without losing control of the day-to-day work',
+];
 ---
 
 <SiteLayout title="About Xpert" description="A hands-on fulfillment company focused on dependable operations, responsive communication, and accountable service.">
@@ -21,8 +28,21 @@ const values = [
         <p class="eyebrow">The Xpert difference</p>
         <h2>Capacity without unnecessary distance.</h2>
         <p>Growth often forces brands to choose between operational capacity and personal accountability. Xpert’s position is different: provide the structure required to do the work reliably while keeping communication direct, practical, and close to the people operating it.</p>
-        <p>This first draft intentionally avoids unverified dates, statistics, certifications, and performance claims. Those will be added only after the source material is reviewed.</p>
+        <p>That combination matters most when requirements are nuanced, the customer experience is on the line, or an exception needs a capable person to take ownership.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--forest">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <p class="eyebrow eyebrow--light">How we show up</p>
+        <h2>Good service is an operating practice.</h2>
+        <p style="color: #d4dcef;">Responsiveness is useful only when it leads to clarity and action. Our approach keeps the relationship connected to the work and focused on what needs to happen next.</p>
+      </div>
+      <ul class="check-list check-list--dark">
+        {workingPrinciples.map((principle) => <li>{principle}</li>)}
+      </ul>
     </div>
   </section>
 
@@ -46,7 +66,8 @@ const values = [
       <div class="split-copy">
         <p class="eyebrow">Experienced people</p>
         <h2>Continuity and operating knowledge matter.</h2>
-        <p>The strongest version of this story will introduce the people who lead and run Xpert, how long they have been close to the work, and what clients can expect from that experience. Final biographies and role details will be written from approved source material.</p>
+        <p>Fulfillment knowledge compounds over time. People who understand the facility, the workflow, and the client relationship can recognize issues faster and make better decisions with less unnecessary back-and-forth.</p>
+        <p>Our final team photography and leadership profiles will put faces to that experience while keeping the focus where it belongs: on the people responsible for the operation.</p>
       </div>
     </div>
   </section>

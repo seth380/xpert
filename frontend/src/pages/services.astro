@@ -13,6 +13,19 @@ const capabilities = [
   { icon: '05', title: 'Shipping', copy: 'Carrier and service coordination with attention to cost, timing, and order-specific needs.' },
   { icon: '06', title: 'Exception support', copy: 'Responsive investigation when an order, address, item, or shipment needs human attention.' },
 ];
+
+const programInputs = [
+  { icon: '01', title: 'Order profile', copy: 'Order volume, SKU count, item mix, seasonality, promotions, bundles, and sales channels all shape the right workflow.' },
+  { icon: '02', title: 'Brand requirements', copy: 'Packaging, presentation, inserts, labeling, lot or serial details, and customer experience standards become operating requirements.' },
+  { icon: '03', title: 'Service expectations', copy: 'Cutoffs, shipping methods, reporting, communication, approvals, and escalation paths need clear ownership before launch.' },
+];
+
+const fitSignals = [
+  'You value dependable execution more than a generic rate-card relationship',
+  'Your products or orders require documented handling and attention to detail',
+  'Your team wants direct communication when exceptions need a decision',
+  'You are willing to define requirements clearly before the operation launches',
+];
 ---
 
 <SiteLayout title="Fulfillment Services" description="Order fulfillment, inventory operations, shipping coordination, kitting, labeling, and brand-specific handling from Xpert Fulfillment.">
@@ -20,7 +33,7 @@ const capabilities = [
 
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Core operation" title="From receiving through shipment." copy="This baseline reflects known capabilities at a high level. Specific service claims, cutoffs, volumes, systems, and performance commitments will be validated before launch." />
+      <SectionHeading eyebrow="Core operation" title="From receiving through shipment." copy="These capabilities form the operating foundation. Specific service levels, systems, volumes, and commitments are defined around each program during discovery and solution design." />
       <div class="service-grid">
         {services.map((service) => (
           <article class="service-card">
@@ -35,7 +48,7 @@ const capabilities = [
 
   <section class="section section--cream">
     <div class="container">
-      <SectionHeading eyebrow="Capabilities" title="Built around the actual work." copy="The details below will become more specific once current workflows, equipment, integrations, and approved customer requirements are documented." />
+      <SectionHeading eyebrow="Capabilities" title="Built around the actual work." copy="Each workflow is documented around the product, order, presentation, shipping, and exception requirements that make the program distinct." />
       <div class="feature-list">
         {capabilities.map((item) => (
           <article class="feature-card">
@@ -45,6 +58,34 @@ const capabilities = [
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Program design" title="The right operation starts with the right inputs." copy="A fulfillment program is more than a list of services. We look at the variables that affect accuracy, labor, communication, and the experience your customer ultimately receives." />
+      <div class="feature-list">
+        {programInputs.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card__icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <p class="eyebrow">A strong operating fit</p>
+        <h2>Built for brands that care how the work gets done.</h2>
+        <p>We are most useful when fulfillment is an important part of the customer promise and both teams want a relationship built on clarity, preparation, and accountability.</p>
+      </div>
+      <ul class="check-list">
+        {fitSignals.map((signal) => <li>{signal}</li>)}
+      </ul>
     </div>
   </section>
   <CtaBand title="Bring us the complicated parts." copy="A useful conversation starts with your operating requirements, recurring friction, and what your current fulfillment model is not solving." />
