@@ -7,9 +7,5 @@ const { light = false } = Astro.props;
 ---
 
 <a class:list={['brand', { 'brand--light': light }]} href="/" aria-label="Xpert Fulfillment home">
-  <span class="brand__mark" aria-hidden="true">X</span>
-  <span class="brand__name">
-    <strong>Xpert</strong>
-    <small>Fulfillment</small>
-  </span>
+  <img src="/brand/xpert-logo.svg" width="320" height="89" alt="Xpert Fulfillment" />
 </a>

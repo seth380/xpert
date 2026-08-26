@@ -23,6 +23,14 @@ not ship unnecessary client-side application code.
 
 All copy remains subject to business, legal, and operational review.
 
+## Brand source
+
+The approved visual reference is Xpert's page at
+`https://www.fpctc.com/xpertfulfillment/`. The frontend uses its owned SVG logo
+and documented palette: navy `#0D3178`, royal blue `#1347AE`, lime `#ADD139`,
+teal `#49B9BA`, and light gray `#F5F5F5`. The new information architecture,
+responsive system, and operator-focused copy remain original to this build.
+
 ## Routes in the baseline
 
 - `/` - homepage and positioning
