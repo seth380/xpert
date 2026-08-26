@@ -2,14 +2,8 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
-
-const industries = [
-  ['01', 'Consumer products', 'Fulfillment for established product brands with repeatable order flow and clear handling requirements.'],
-  ['02', 'Health and wellness', 'Detail-oriented operations for brands where product identification, presentation, and consistency matter.'],
-  ['03', 'Publishing and media', 'Storage and order handling for books, media, collections, and direct-to-consumer programs.'],
-  ['04', 'Subscription and recurring', 'Repeatable kitting and shipping workflows designed around recurring schedules and changing components.'],
-  ['05', 'Specialty ecommerce', 'Brand-specific fulfillment for product lines that do not fit a generic high-volume template.'],
-];
+import IndustryIcon from '../components/IndustryIcon.astro';
+import { industries } from '../data/site';
 ---
 
 <SiteLayout title="Industries Served" description="Flexible fulfillment operations for established consumer, wellness, publishing, subscription, and specialty ecommerce brands.">
@@ -17,12 +11,12 @@ const industries = [
 
   <section class="section">
     <div class="container">
-      <div class="industry-list">
-        {industries.map(([number, title, copy]) => (
-          <article class="industry-row">
-            <span>{number}</span>
-            <h3>{title}</h3>
-            <p>{copy}</p>
+      <div class="industry-card-grid industry-card-grid--page">
+        {industries.map((industry) => (
+          <article class="industry-card">
+            <div class="industry-card__icon"><IndustryIcon name={industry.icon} /></div>
+            <h3>{industry.title}</h3>
+            <p>{industry.description}</p>
           </article>
         ))}
       </div>

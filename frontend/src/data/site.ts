@@ -41,6 +41,39 @@ export const services = [
   },
 ];
 
+export const industries = [
+  {
+    icon: 'apparel' as const,
+    title: 'Apparel',
+    description: 'Accurate fulfillment for size, color, style, and seasonal product variations.',
+  },
+  {
+    icon: 'ecommerce' as const,
+    title: 'Ecommerce',
+    description: 'Dependable direct-to-consumer operations across growing catalogs and sales channels.',
+  },
+  {
+    icon: 'technology' as const,
+    title: 'Tech & electronics',
+    description: 'Careful handling for devices, accessories, components, and connected-product programs.',
+  },
+  {
+    icon: 'nutraceuticals' as const,
+    title: 'Nutraceuticals',
+    description: 'Detail-oriented fulfillment for wellness products where identification and consistency matter.',
+  },
+  {
+    icon: 'crowdfunding' as const,
+    title: 'Crowdfunding',
+    description: 'Structured launch fulfillment for campaigns moving from backer promise to repeatable operation.',
+  },
+  {
+    icon: 'publishing' as const,
+    title: 'Books & print media',
+    description: 'Storage and order handling for books, collections, print programs, and related media.',
+  },
+];
+
 export const operatingPrinciples = [
   'Clear ownership when something needs attention',
   'Responsive communication with people who know the operation',

@@ -1,0 +1,54 @@
+---
+interface Props {
+  name: 'apparel' | 'ecommerce' | 'technology' | 'nutraceuticals' | 'crowdfunding' | 'publishing';
+}
+
+const { name } = Astro.props;
+---
+
+<svg class="industry-icon" viewBox="0 0 64 64" aria-hidden="true">
+  {name === 'apparel' && (
+    <>
+      <path d="M22 14 12 20 6 34l10 4 4-8v24h24V30l4 8 10-4-6-14-10-6c-1 5-4 7-10 7s-9-2-10-7Z" />
+      <path d="M24 16c1 3 4 5 8 5s7-2 8-5" />
+    </>
+  )}
+  {name === 'ecommerce' && (
+    <>
+      <path d="M7 11h7l5 29h29l7-20H17" />
+      <path d="M22 27h29M25 34h23" />
+      <circle cx="24" cy="50" r="4" />
+      <circle cx="46" cy="50" r="4" />
+    </>
+  )}
+  {name === 'technology' && (
+    <>
+      <rect x="16" y="6" width="32" height="52" rx="6" />
+      <path d="M16 14h32M16 48h32M29 53h6" />
+      <circle cx="28" cy="10" r="1" class="industry-icon__fill" />
+      <circle cx="33" cy="10" r="1" class="industry-icon__fill" />
+    </>
+  )}
+  {name === 'nutraceuticals' && (
+    <>
+      <path d="M18 17h22v6c5 3 8 8 8 14v17H12V37c0-6 3-11 8-14v-6" />
+      <path d="M17 10h24v7H17zM12 36h36M21 43h18" />
+      <path d="M42 44c3-5 8-7 12-4s4 8 1 12-8 7-12 4-4-8-1-12Z" />
+      <path d="m44 53 9-11" />
+    </>
+  )}
+  {name === 'crowdfunding' && (
+    <>
+      <path d="M12 33c0-11 8-19 20-19 6 0 12 2 16 6l7-2-3 10c1 2 1 4 1 6 0 10-8 18-20 18H20l-3 6h-7l1-10c-4-3-6-7-6-12 0-2 0-3 1-5" />
+      <path d="M24 28h16M32 23v10" />
+      <circle cx="46" cy="29" r="1" class="industry-icon__fill" />
+    </>
+  )}
+  {name === 'publishing' && (
+    <>
+      <path d="M6 13c10-2 18 0 26 6v34c-8-6-16-8-26-6V13Zm52 0c-10-2-18 0-26 6v34c8-6 16-8 26-6V13Z" />
+      <path d="M12 23c5 0 10 1 15 4M12 31c5 0 10 1 15 4M52 23c-5 0-10 1-15 4M52 31c-5 0-10 1-15 4" />
+    </>
+  )}
+</svg>
+
