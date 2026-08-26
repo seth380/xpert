@@ -1,0 +1,28 @@
+---
+import Brand from './Brand.astro';
+import { navigation } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <Brand light />
+      <p>Dependable fulfillment, backed by people who stay accountable.</p>
+    </div>
+    <div>
+      <p class="eyebrow eyebrow--light">Explore</p>
+      <ul class="footer-links">
+        {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow eyebrow--light">Next step</p>
+      <p>Tell us what your operation needs and where the current friction lives.</p>
+      <a class="text-link text-link--light" href="/contact/">Start a conversation <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© {new Date().getFullYear()} Xpert Fulfillment. All rights reserved.</p>
+    <p class="site-footer__status">New website preview — not yet approved for launch</p>
+  </div>
+</footer>

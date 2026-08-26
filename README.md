@@ -1,5 +1,9 @@
 # Xpert Fulfillment
 
+> The repository now also contains the new public website baseline under
+> [`frontend/`](frontend/README.md). The existing WordPress site remains the
+> production website while the replacement is reviewed and completed.
+
 Backend API for Xpert Fulfillment's order fulfillment operations. This repository
 is a **fresh starter baseline** — there was no pre-existing codebase to preserve;
 this establishes the initial project structure, conventions, and a minimal

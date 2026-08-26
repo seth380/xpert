@@ -1,0 +1,51 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { services } from '../data/site';
+
+const capabilities = [
+  { icon: '01', title: 'Receiving', copy: 'Documented intake and handling designed to surface discrepancies instead of burying them.' },
+  { icon: '02', title: 'Pick and pack', copy: 'Repeatable fulfillment processes shaped around product, packaging, and order requirements.' },
+  { icon: '03', title: 'Kitting and inserts', copy: 'Controlled assembly and presentation work for launches, campaigns, and recurring programs.' },
+  { icon: '04', title: 'Labeling', copy: 'Product and shipment labeling performed against agreed specifications and workflows.' },
+  { icon: '05', title: 'Shipping', copy: 'Carrier and service coordination with attention to cost, timing, and order-specific needs.' },
+  { icon: '06', title: 'Exception support', copy: 'Responsive investigation when an order, address, item, or shipment needs human attention.' },
+];
+---
+
+<SiteLayout title="Fulfillment Services" description="Order fulfillment, inventory operations, shipping coordination, kitting, labeling, and brand-specific handling from Xpert Fulfillment.">
+  <PageHero eyebrow="Services" title="The work behind dependable fulfillment." copy="Core fulfillment capabilities matter. The way they are operated, communicated, and adapted to your requirements matters even more." />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Core operation" title="From receiving through shipment." copy="This baseline reflects known capabilities at a high level. Specific service claims, cutoffs, volumes, systems, and performance commitments will be validated before launch." />
+      <div class="service-grid">
+        {services.map((service) => (
+          <article class="service-card">
+            <span class="service-card__number">{service.number}</span>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading eyebrow="Capabilities" title="Built around the actual work." copy="The details below will become more specific once current workflows, equipment, integrations, and approved customer requirements are documented." />
+      <div class="feature-list">
+        {capabilities.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card__icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand title="Bring us the complicated parts." copy="A useful conversation starts with your operating requirements, recurring friction, and what your current fulfillment model is not solving." />
+</SiteLayout>

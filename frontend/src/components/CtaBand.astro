@@ -1,0 +1,22 @@
+---
+interface Props {
+  title?: string;
+  copy?: string;
+}
+
+const {
+  title = 'You know what good operations should feel like.',
+  copy = 'Let’s talk about the standards, constraints, and service your brand requires.',
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    <div>
+      <p class="eyebrow eyebrow--light">A better operating relationship</p>
+      <h2>{title}</h2>
+      <p>{copy}</p>
+    </div>
+    <a class="button button--light" href="/contact/">Start a conversation <span aria-hidden="true">→</span></a>
+  </div>
+</section>

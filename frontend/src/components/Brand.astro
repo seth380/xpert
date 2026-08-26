@@ -1,0 +1,15 @@
+---
+interface Props {
+  light?: boolean;
+}
+
+const { light = false } = Astro.props;
+---
+
+<a class:list={['brand', { 'brand--light': light }]} href="/" aria-label="Xpert Fulfillment home">
+  <span class="brand__mark" aria-hidden="true">X</span>
+  <span class="brand__name">
+    <strong>Xpert</strong>
+    <small>Fulfillment</small>
+  </span>
+</a>

@@ -1,0 +1,33 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const steps = [
+  ['01', 'Operating discovery', 'We document order sources, product and packaging requirements, volumes, service expectations, integrations, exceptions, and ownership.'],
+  ['02', 'Solution design', 'We translate the requirements into an operating plan covering receiving, inventory, fulfillment, shipping, communication, and escalation.'],
+  ['03', 'Validation and onboarding', 'We confirm data, process steps, responsibilities, and launch criteria before moving work into the operation.'],
+  ['04', 'Controlled launch', 'We begin against an agreed plan, monitor the workflow closely, and resolve early exceptions with clear ownership.'],
+  ['05', 'Ongoing operation', 'We keep communication close to the work and use real operating feedback to improve the process deliberately.'],
+];
+---
+
+<SiteLayout title="How It Works" description="A deliberate fulfillment onboarding process: discovery, solution design, validation, controlled launch, and accountable ongoing operation.">
+  <PageHero eyebrow="How it works" title="A controlled start creates a more dependable operation." copy="The goal is not to move fast enough to inherit hidden problems. It is to understand the work, define ownership, and launch with the details under control." />
+  <section class="section">
+    <div class="container">
+      <div class="timeline">
+        {steps.map(([number, title, copy]) => (
+          <article class="timeline__item">
+            <div class="timeline__number">{number}</div>
+            <div class="timeline__content">
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand title="Start with the truth about the operation." copy="The better we understand the work and its constraints, the more useful the first conversation will be." />
+</SiteLayout>

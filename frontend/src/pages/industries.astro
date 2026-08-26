@@ -1,0 +1,46 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const industries = [
+  ['01', 'Consumer products', 'Fulfillment for established product brands with repeatable order flow and clear handling requirements.'],
+  ['02', 'Health and wellness', 'Detail-oriented operations for brands where product identification, presentation, and consistency matter.'],
+  ['03', 'Publishing and media', 'Storage and order handling for books, media, collections, and direct-to-consumer programs.'],
+  ['04', 'Subscription and recurring', 'Repeatable kitting and shipping workflows designed around recurring schedules and changing components.'],
+  ['05', 'Specialty ecommerce', 'Brand-specific fulfillment for product lines that do not fit a generic high-volume template.'],
+];
+---
+
+<SiteLayout title="Industries Served" description="Flexible fulfillment operations for established consumer, wellness, publishing, subscription, and specialty ecommerce brands.">
+  <PageHero eyebrow="Industries served" title="Built for products with real operating requirements." copy="We are a fit for brands that value disciplined execution and direct communication more than a generic fulfillment package." />
+
+  <section class="section">
+    <div class="container">
+      <div class="industry-list">
+        {industries.map(([number, title, copy]) => (
+          <article class="industry-row">
+            <span>{number}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <p class="eyebrow">Fit over labels</p>
+        <h2>Your workflow matters more than your category.</h2>
+        <p>Industry pages often become a list of generic claims. We would rather understand your order profile, catalog, packaging, channels, exceptions, and service expectations—then determine whether the operational fit is right.</p>
+      </div>
+      <div class="contact-note">
+        <strong>Planned discovery input</strong>
+        <span>Approved verticals, regulated-product boundaries, current examples, and customer stories will be added after review with Seth and Bob.</span>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</SiteLayout>
