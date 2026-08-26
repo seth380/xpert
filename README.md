@@ -7,7 +7,7 @@ working slice (health check + an `orders` resource) for the team to build on.
 
 ## What this is (and isn't)
 
-- **Is**: a working Node.js/TypeScript/Express API skeleton with a Postgres
+- **Is**: a working Node.js/TypeScript/Express API skeleton with a MySQL
   schema (via Prisma) for orders, wired up with linting, tests, and a build
   pipeline.
 - **Isn't**: a finished fulfillment system. There's no shipping-carrier
@@ -28,7 +28,7 @@ src/
   services/         # business logic, validation, DB access
   types/            # shared TypeScript types
 prisma/
-  schema.prisma     # data model (PostgreSQL)
+  schema.prisma     # data model (MySQL)
 tests/              # vitest unit/integration tests
 ```
 
@@ -39,7 +39,7 @@ simple. There is no message queue, cache, or background worker yet.
 
 - Node.js 22.x (developed against `v22.22.2`)
 - npm 10.x
-- PostgreSQL 14+ (any recent Postgres works; no version-specific features used)
+- MySQL 8.0+ (any recent MySQL works; no version-specific features used)
 
 ## Local setup
 
@@ -61,7 +61,7 @@ See `.env.example` for the full list with placeholder values. Summary:
 | `NODE_ENV`     | no       | `development` / `production` / `test`                 |
 | `PORT`         | no       | HTTP port (default `3000`)                             |
 | `CORS_ORIGIN`  | no       | Allowed CORS origin(s), `*` for development            |
-| `DATABASE_URL` | yes      | PostgreSQL connection string used by Prisma            |
+| `DATABASE_URL` | yes      | MySQL connection string used by Prisma                 |
 | `DHL_API_KEY`  | no       | Placeholder for a future DHL integration (not wired up) |
 | `SPEEDX_API_KEY` | no     | Placeholder for a future SpeedX integration (not wired up) |
 

@@ -39,7 +39,7 @@ changed."
     works, but the actual database round-trip is unverified.
   - **Action needed**: on a machine with normal internet access, run `npm
     install && npx prisma generate && npx prisma migrate dev` against a real
-    Postgres instance and confirm the `orders` endpoints work against real
+    MySQL instance and confirm the `orders` endpoints work against real
     data. This is expected to work; it simply couldn't be proven inside this
     build sandbox.
 
@@ -57,14 +57,16 @@ processor, no email/notification service).
 
 ## Database and infrastructure dependencies
 
-- **PostgreSQL** — required, connected via `DATABASE_URL` and Prisma.
+- **MySQL** — required, connected via `DATABASE_URL` and Prisma. (Switched
+  from an initial PostgreSQL choice to MySQL on 2026-08-26, before any real
+  data existed — no migration was needed.)
 - No cache, queue, object storage, or search index is used.
 - No infrastructure-as-code (Terraform, etc.) or Dockerfile exists yet.
 
 ## Manual deployment or operational steps
 
 None exist yet — there is no deployment pipeline. Whoever deploys this first
-will need to: provision Postgres, set environment variables (see README),
+will need to: provision MySQL, set environment variables (see README),
 run `prisma migrate deploy`, then run `npm run build && npm start` (or
 containerize it).
 
