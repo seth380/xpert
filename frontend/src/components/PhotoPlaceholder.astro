@@ -1,0 +1,17 @@
+---
+interface Props {
+  label: string;
+  note: string;
+  variant?: 'warehouse' | 'team' | 'detail';
+}
+
+const { label, note, variant = 'warehouse' } = Astro.props;
+---
+
+<div class:list={['photo-placeholder', `photo-placeholder--${variant}`]} role="img" aria-label={`${label}. ${note}`}>
+  <div class="photo-placeholder__grid" aria-hidden="true"></div>
+  <div class="photo-placeholder__label">
+    <span>{label}</span>
+    <small>{note}</small>
+  </div>
+</div>

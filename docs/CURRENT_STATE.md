@@ -1,17 +1,17 @@
 # Current State
 
-Last updated: 2026-08-26, at initial baseline commit. This is a **new**
-project — there was no prior codebase for Xpert Fulfillment to inherit, so
-"current state" here means "what this baseline actually contains," not "what
-changed."
+Last updated: 2026-08-26, during development-baseline verification. This is a
+**new** project — there was no prior codebase for Xpert Fulfillment to inherit,
+so "current state" means "what this starter actually contains," not a record of
+changes to a legacy system.
 
 ## What currently works
 
 - Express server boots and serves `GET /health` (verified end-to-end with a
   running process, not just unit tests).
-- `POST /api/orders`, `GET /api/orders`, `GET /api/orders/:id` are implemented
-  end-to-end (route → controller → service → Prisma), but untested against a
-  real database in this environment (see "Not verified" below).
+- `POST /api/orders`, `GET /api/orders`, and `GET /api/orders/:id` are
+  implemented end-to-end (route → controller → service → Prisma) and verified
+  against an isolated MySQL 8.0 database using synthetic data.
 - Input validation for order creation (`validateCreateOrderInput`) is pure,
   unit-tested, and does not require a database connection.
 - TypeScript build (`npm run build`), ESLint (`npm run lint`), and the vitest
@@ -27,21 +27,9 @@ changed."
 - **No inventory/product catalog**: order items are freeform (`sku`,
   `description`, `quantity`, `unitPrice`) with no backing `Product` table.
 - **No pagination/filtering** on `GET /api/orders` — it returns every order.
-- **Not verified against a live database**: this baseline was built in a
-  sandboxed cloud environment whose outbound network access to Prisma's
-  binary CDN (`binaries.prisma.sh`) was blocked (403 Forbidden on `prisma
-  generate`). As a result:
-  - `npx prisma generate` could not be completed here, so the generated
-    Prisma client's native query engine is not present in this environment.
-  - `GET /api/orders` was smoke-tested against a running server and correctly
-    returned an HTTP 500 with a logged error (`@prisma/client did not
-    initialize yet`) rather than crashing the process — the error handling
-    works, but the actual database round-trip is unverified.
-  - **Action needed**: on a machine with normal internet access, run `npm
-    install && npx prisma generate && npx prisma migrate dev` against a real
-    MySQL instance and confirm the `orders` endpoints work against real
-    data. This is expected to work; it simply couldn't be proven inside this
-    build sandbox.
+- **Not verified against production**: no production database, credentials,
+  customer records, or live service were used. Production provisioning,
+  access controls, backup/restore, and deployment remain future work.
 
 ## Major backend routes / services / integrations
 
@@ -57,9 +45,9 @@ processor, no email/notification service).
 
 ## Database and infrastructure dependencies
 
-- **MySQL** — required, connected via `DATABASE_URL` and Prisma. (Switched
-  from an initial PostgreSQL choice to MySQL on 2026-08-26, before any real
-  data existed — no migration was needed.)
+- **MySQL** — required, connected via `DATABASE_URL` and Prisma. The initial
+  schema is reproducible through the committed Prisma migration. PostgreSQL
+  was replaced before any real data existed, so no data conversion was needed.
 - No cache, queue, object storage, or search index is used.
 - No infrastructure-as-code (Terraform, etc.) or Dockerfile exists yet.
 
@@ -87,12 +75,12 @@ containerize it).
   vulnerable dependency chain (`@prisma/dev` → `alchemy` → `hono`). Pinning
   the exact version resolved it. If you deliberately upgrade Prisma later,
   re-run `npm audit` afterward.
-- One remaining `npm audit` advisory (high severity, `deepmerge-ts` via
-  `@prisma/config`, used internally by the Prisma CLI's config loader) has no
-  non-breaking fix available as of this baseline; it's config-loading code
-  (not exposed to attacker-controlled runtime input in this app) and was left
-  as-is rather than force-downgrading Prisma. Re-check `npm audit` next time
-  dependencies are touched.
+- One advisory chain remains in `npm audit` (`deepmerge-ts` via
+  `@prisma/config` and the Prisma CLI). The available remediation is a Prisma
+  version change rather than a compatible patch. This is development tooling,
+  not an HTTP runtime dependency, so it was documented instead of changing
+  Prisma during baseline hardening. Re-evaluate it before production release
+  and whenever dependencies change.
 
 ## Files or data intentionally excluded from Git, and why
 

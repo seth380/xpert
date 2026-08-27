@@ -1,0 +1,75 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const values = [
+  { icon: '01', title: 'Reliability', copy: 'Build repeatable processes and honor the commitments we make.' },
+  { icon: '02', title: 'Responsiveness', copy: 'Keep communication close to the people who understand the work.' },
+  { icon: '03', title: 'Accountability', copy: 'Make ownership clear, especially when something needs attention.' },
+];
+
+const workingPrinciples = [
+  'Listen closely before prescribing a workflow',
+  'Put operating requirements and ownership in writing',
+  'Communicate directly when an exception needs attention',
+  'Improve the process without losing control of the day-to-day work',
+];
+---
+
+<SiteLayout title="About Xpert" description="A hands-on fulfillment company focused on dependable operations, responsive communication, and accountable service.">
+  <PageHero eyebrow="About Xpert" title="A fulfillment partner should feel like part of the operation." copy="Xpert combines the capacity of a 100,000-square-foot primary facility with the direct, hands-on service established brands expect from a committed operating partner." />
+
+  <section class="section">
+    <div class="container split-grid">
+      <PhotoPlaceholder label="Facility exterior or wide interior" note="Replace with a current, approved photo of Xpert's primary facility" />
+      <div class="split-copy">
+        <p class="eyebrow">The Xpert difference</p>
+        <h2>Capacity without unnecessary distance.</h2>
+        <p>Growth often forces brands to choose between operational capacity and personal accountability. Xpert’s position is different: provide the structure required to do the work reliably while keeping communication direct, practical, and close to the people operating it.</p>
+        <p>That combination matters most when requirements are nuanced, the customer experience is on the line, or an exception needs a capable person to take ownership.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--forest">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <p class="eyebrow eyebrow--light">How we show up</p>
+        <h2>Good service is an operating practice.</h2>
+        <p style="color: #d4dcef;">Responsiveness is useful only when it leads to clarity and action. Our approach keeps the relationship connected to the work and focused on what needs to happen next.</p>
+      </div>
+      <ul class="check-list check-list--dark">
+        {workingPrinciples.map((principle) => <li>{principle}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="feature-list">
+        {values.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card__icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split-grid split-grid--reverse">
+      <PhotoPlaceholder label="Leadership and operations team" note="Replace with approved team photography and final names/titles" variant="team" />
+      <div class="split-copy">
+        <p class="eyebrow">Experienced people</p>
+        <h2>Continuity and operating knowledge matter.</h2>
+        <p>Fulfillment knowledge compounds over time. People who understand the facility, the workflow, and the client relationship can recognize issues faster and make better decisions with less unnecessary back-and-forth.</p>
+        <p>Our final team photography and leadership profiles will put faces to that experience while keeping the focus where it belongs: on the people responsible for the operation.</p>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</SiteLayout>

@@ -1,0 +1,49 @@
+---
+import Brand from './Brand.astro';
+import { navigation, site } from '../data/site';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <Brand />
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="sr-only">Open navigation</span>
+      <span></span><span></span>
+    </button>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+      <ul>
+        {navigation.map((item) => (
+          <li>
+            <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="header-actions">
+        <a
+          class="button button--small button--portal"
+          href={site.clientPortalUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Client login (opens in a new tab)"
+        >Client login <span aria-hidden="true">↗</span></a>
+        <a class="button button--small" href="/contact/">Start a conversation</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  const toggle = header?.querySelector('.nav-toggle');
+  const nav = header?.querySelector('.primary-nav');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('is-open', !open);
+  });
+</script>

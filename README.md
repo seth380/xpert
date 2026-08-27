@@ -1,5 +1,9 @@
 # Xpert Fulfillment
 
+> The repository now also contains the new public website baseline under
+> [`frontend/`](frontend/README.md). The existing WordPress site remains the
+> production website while the replacement is reviewed and completed.
+
 Backend API for Xpert Fulfillment's order fulfillment operations. This repository
 is a **fresh starter baseline** — there was no pre-existing codebase to preserve;
 this establishes the initial project structure, conventions, and a minimal
@@ -44,11 +48,10 @@ simple. There is no message queue, cache, or background worker yet.
 ## Local setup
 
 ```bash
-npm install
+npm ci
 cp .env.example .env    # then fill in real values, especially DATABASE_URL
-npx prisma generate     # generates the Prisma client (needs network access
-                         # to Prisma's binary CDN — see "Known limitations")
-npx prisma migrate dev  # creates the database schema from prisma/schema.prisma
+npx prisma generate     # generates the Prisma client
+npx prisma migrate deploy # applies the committed migrations to a fresh database
 npm run dev              # starts the API on http://localhost:3000 with reload
 ```
 
@@ -70,15 +73,18 @@ Never commit a real `.env` file — it's git-ignored on purpose.
 ## Database setup / migrations
 
 The schema lives in `prisma/schema.prisma` (currently: `Order` and
-`OrderItem`, plus `OrderStatus` and `Carrier` enums). To apply it to a fresh
-database:
+`OrderItem`, plus `OrderStatus` and `Carrier` enums). The initial migration is
+committed under `prisma/migrations/`. To apply all committed migrations to a
+fresh database:
 
 ```bash
-npx prisma migrate dev --name init
+npx prisma migrate deploy
 ```
 
-This both creates a migration file under `prisma/migrations/` and applies it.
-Run `npx prisma migrate deploy` in production/CI instead of `migrate dev`.
+When intentionally changing the schema during development, create and apply a
+new migration with `npx prisma migrate dev --name <change-name>`. Review the
+generated SQL before committing it. Use `prisma migrate deploy` in production
+and CI.
 
 ## Build, test, and start
 
@@ -89,9 +95,10 @@ npm test        # vitest — unit tests, no live DB required
 npm start       # runs the compiled server (dist/index.js)
 ```
 
-Current verified results (see docs/CURRENT_STATE.md for the full smoke-check
-log): build ✅, lint ✅ (0 errors, 0 warnings), tests ✅ (6/6 passing), server
-boot + `/health` smoke check ✅.
+Current independently verified results (see docs/CURRENT_STATE.md): clean
+install ✅, Prisma generate/validate ✅, build ✅, lint ✅, tests ✅ (6/6),
+migration deploy to empty MySQL 8.0 ✅, and an end-to-end order create/get/list
+round-trip ✅.
 
 ## Deployment
 
@@ -107,10 +114,8 @@ docs/CURRENT_STATE.md.
 - No carrier integrations (DHL, SpeedX, etc.) — env var placeholders exist
   but nothing calls them.
 - No CI, no Dockerfile, no deployment target.
-- `prisma generate` could not be verified from the build sandbox used to
-  create this baseline because outbound access to Prisma's binary CDN
-  (`binaries.prisma.sh`) was blocked in that environment. It's expected to
-  work normally in a regular dev machine or CI runner with normal internet
-  access — this is a sandbox networking limitation, not a code issue.
+- Production database connectivity and deployment are intentionally not
+  configured or tested. Verification used an isolated, disposable MySQL 8.0
+  database containing synthetic data only.
 
 See [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) for full details.

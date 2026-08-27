@@ -1,0 +1,63 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import IndustryIcon from '../components/IndustryIcon.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { industries } from '../data/site';
+
+const considerations = [
+  { icon: '01', title: 'Catalog complexity', copy: 'Variants, bundles, components, subscriptions, launches, and seasonal changes all affect inventory and order logic.' },
+  { icon: '02', title: 'Handling requirements', copy: 'Packaging standards, product identification, presentation, storage, and special handling need to be understood early.' },
+  { icon: '03', title: 'Demand pattern', copy: 'Steady volume, campaign spikes, replenishment cycles, and promotion calendars require different capacity and communication plans.' },
+];
+---
+
+<SiteLayout title="Industries Served" description="Flexible fulfillment operations for established consumer, wellness, publishing, subscription, and specialty ecommerce brands.">
+  <PageHero eyebrow="Industries served" title="Built for products with real operating requirements." copy="We are a fit for brands that value disciplined execution and direct communication more than a generic fulfillment package." />
+
+  <section class="section">
+    <div class="container">
+      <div class="industry-card-grid industry-card-grid--page">
+        {industries.map((industry) => (
+          <article class="industry-card">
+            <div class="industry-card__icon"><IndustryIcon name={industry.icon} /></div>
+            <h3>{industry.title}</h3>
+            <p>{industry.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <p class="eyebrow">Fit over labels</p>
+        <h2>Your workflow matters more than your category.</h2>
+        <p>Industry pages often become a list of generic claims. We would rather understand your order profile, catalog, packaging, channels, exceptions, and service expectations—then determine whether the operational fit is right.</p>
+        <p>That honest fit assessment protects both teams and creates a stronger foundation when we move forward.</p>
+      </div>
+      <div class="contact-note">
+        <strong>Do you operate outside these categories?</strong>
+        <span>This list reflects areas of experience, not a hard boundary. If your product requires careful, repeatable fulfillment, start with the workflow and we will evaluate the fit directly.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="What changes by industry" title="Different products create different operating demands." copy="We design around the details that materially change receiving, storage, fulfillment, quality checks, and exception handling." />
+      <div class="feature-list">
+        {considerations.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card__icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</SiteLayout>

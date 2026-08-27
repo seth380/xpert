@@ -1,0 +1,76 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const nextSteps = [
+  { icon: '01', title: 'We review the fit', copy: 'We look at your products, order profile, service requirements, timeline, and the problems you want a new partner to solve.' },
+  { icon: '02', title: 'We clarify the operation', copy: 'If there is a potential fit, we identify the unknowns and schedule a focused discovery conversation with the right people.' },
+  { icon: '03', title: 'We define the path forward', copy: 'Both teams leave with clear next steps—whether that is deeper solution design, additional information, or an honest no-fit decision.' },
+];
+---
+
+<SiteLayout title="Start a Conversation" description="Tell Xpert Fulfillment about your operation, order profile, service requirements, and current fulfillment challenges.">
+  <PageHero eyebrow="Start a conversation" title="Tell us how the operation needs to work." copy="We are not looking for a perfect sales brief. A clear picture of your requirements, order profile, and current friction is enough to begin." />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-details">
+        <p class="eyebrow">A useful first conversation</p>
+        <h2>Start with the operating realities.</h2>
+        <p>Helpful context includes your products, monthly order range, sales channels, special handling, shipping expectations, systems, timeline, and what you want a new partner to improve.</p>
+        <div class="contact-note">
+          <strong>Contact routing is intentionally not connected yet.</strong>
+          <span>Bob will confirm the approved phone number, inbox, form recipients, spam protection, retention policy, and CRM or lead workflow before launch.</span>
+        </div>
+      </div>
+
+      <form class="lead-form" aria-describedby="form-status" onsubmit="return false">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input id="company" name="company" autocomplete="organization" />
+          </div>
+          <div class="form-field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" />
+          </div>
+          <div class="form-field">
+            <label for="orders">Monthly orders</label>
+            <select id="orders" name="orders">
+              <option value="">Select a range</option>
+              <option>Under 1,000</option>
+              <option>1,000–5,000</option>
+              <option>5,000–15,000</option>
+              <option>15,000+</option>
+            </select>
+          </div>
+          <div class="form-field form-field--full">
+            <label for="details">What should we understand about your operation?</label>
+            <textarea id="details" name="details"></textarea>
+          </div>
+        </div>
+        <p class="form-status" id="form-status">Preview only: submissions are disabled until secure lead routing and privacy requirements are approved.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading eyebrow="What happens next" title="A practical conversation, not a generic sales sequence." copy="The first step is to understand whether the operating requirements, expectations, and working relationship make sense for both teams." />
+      <div class="feature-list">
+        {nextSteps.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card__icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

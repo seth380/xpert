@@ -1,0 +1,75 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const steps = [
+  ['01', 'Operating discovery', 'We document order sources, product and packaging requirements, volumes, service expectations, integrations, exceptions, and ownership.'],
+  ['02', 'Solution design', 'We translate the requirements into an operating plan covering receiving, inventory, fulfillment, shipping, communication, and escalation.'],
+  ['03', 'Validation and onboarding', 'We confirm data, process steps, responsibilities, and launch criteria before moving work into the operation.'],
+  ['04', 'Controlled launch', 'We begin against an agreed plan, monitor the workflow closely, and resolve early exceptions with clear ownership.'],
+  ['05', 'Ongoing operation', 'We keep communication close to the work and use real operating feedback to improve the process deliberately.'],
+];
+
+const launchDecisions = [
+  { icon: '01', title: 'Data and systems', copy: 'How orders, products, inventory, shipment updates, and reporting move between your team and ours.' },
+  { icon: '02', title: 'Operating rules', copy: 'Receiving standards, order logic, packaging, shipping methods, approvals, and the requirements that cannot be left ambiguous.' },
+  { icon: '03', title: 'Communication', copy: 'Day-to-day contacts, escalation paths, exception ownership, reporting rhythm, and how decisions will be documented.' },
+];
+
+const ongoingRhythm = [
+  'Monitor the live workflow and surface exceptions early',
+  'Keep responsibilities and escalation paths clear',
+  'Review recurring friction instead of normalizing it',
+  'Improve deliberately as products, channels, and volumes change',
+];
+---
+
+<SiteLayout title="How It Works" description="A deliberate fulfillment onboarding process: discovery, solution design, validation, controlled launch, and accountable ongoing operation.">
+  <PageHero eyebrow="How it works" title="A controlled start creates a more dependable operation." copy="The goal is not to move fast enough to inherit hidden problems. It is to understand the work, define ownership, and launch with the details under control." />
+  <section class="section">
+    <div class="container">
+      <div class="timeline">
+        {steps.map(([number, title, copy]) => (
+          <article class="timeline__item">
+            <div class="timeline__number">{number}</div>
+            <div class="timeline__content">
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading eyebrow="Before go-live" title="Important decisions should be made before orders depend on them." copy="The onboarding process turns assumptions into an agreed operating plan. These are some of the areas both teams work through together." />
+      <div class="feature-list">
+        {launchDecisions.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card__icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <p class="eyebrow">After launch</p>
+        <h2>Onboarding ends. Ownership does not.</h2>
+        <p>A dependable operation needs attention after the first orders ship. We stay close to the work, use real operating feedback, and address recurring issues at the process level.</p>
+      </div>
+      <ul class="check-list">
+        {ongoingRhythm.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+  <CtaBand title="Start with the truth about the operation." copy="The better we understand the work and its constraints, the more useful the first conversation will be." />
+</SiteLayout>
