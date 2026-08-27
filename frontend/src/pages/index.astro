@@ -4,6 +4,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
 import CtaBand from '../components/CtaBand.astro';
 import IndustryIcon from '../components/IndustryIcon.astro';
+import SystemPreview from '../components/SystemPreview.astro';
 import { industries, operatingPrinciples, services, site } from '../data/site';
 
 const process = [
@@ -11,6 +12,32 @@ const process = [
   { number: '02', title: 'Design', copy: 'Together, we define the receiving, inventory, fulfillment, shipping, and exception-handling process.' },
   { number: '03', title: 'Validate', copy: 'We test the details, clarify ownership, and establish what success should look like before launch.' },
   { number: '04', title: 'Operate', copy: 'Your work runs through a repeatable process with responsive people close to the operation.' },
+];
+
+const topBenefits = [
+  {
+    title: 'Built around your operation.',
+    copy: 'Products, order profiles, packaging, systems, and exception rules shape the workflow—not a generic template.',
+  },
+  {
+    title: 'Visibility without the black box.',
+    copy: 'Clear status, defined ownership, and useful communication help your team understand what is happening and what needs attention.',
+  },
+  {
+    title: 'People close enough to act.',
+    copy: 'Questions and exceptions stay connected to people who understand the work and can move the issue forward.',
+  },
+];
+
+const integrationCandidates = [
+  { name: 'Shopify', mark: 'S' },
+  { name: 'WooCommerce', mark: 'W' },
+  { name: 'Amazon', mark: 'A' },
+  { name: 'Walmart', mark: 'W' },
+  { name: 'eBay', mark: 'e' },
+  { name: 'BigCommerce', mark: 'B' },
+  { name: 'TikTok Shop', mark: 'T' },
+  { name: 'Custom / API', mark: '{ }' },
 ];
 ---
 
@@ -24,7 +51,7 @@ const process = [
       <div class="hero__intro">
         <p>Dependable fulfillment for established brands that value accuracy, clear communication, and an operating partner who stays accountable.</p>
         <div class="hero__actions">
-          <a class="button" href="/contact/">Start a conversation</a>
+          <a class="button" href="/contact/">Get a quote</a>
           <a class="button button--outline" href="/how-it-works/">See how we work</a>
         </div>
       </div>
@@ -43,6 +70,36 @@ const process = [
     </div>
   </div>
 
+  <section class="section section--proof-intro">
+    <div class="container proof-intro">
+      <div class="proof-intro__copy">
+        <p class="eyebrow">Control where it counts</p>
+        <h2>Fulfillment should create confidence, not more chasing.</h2>
+        <div class="benefit-list">
+          {topBenefits.map((benefit) => (
+            <article class="benefit-list__item">
+              <span aria-hidden="true">✓</span>
+              <div><h3>{benefit.title}</h3><p>{benefit.copy}</p></div>
+            </article>
+          ))}
+        </div>
+        <a class="button" href="/contact/">Get a quote</a>
+      </div>
+
+      <div class="proof-intro__visual">
+        <div class="review-proof review-proof--pending">
+          <span class="review-proof__icon" aria-hidden="true">S</span>
+          <div>
+            <div class="review-proof__stars" aria-label="Rating placeholder">☆ ☆ ☆ ☆ ☆</div>
+            <strong>Verified review signal</strong>
+            <small>Shopify/App Store source, score, and review count pending confirmation.</small>
+          </div>
+        </div>
+        <SystemPreview />
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <SectionHeading
@@ -60,6 +117,25 @@ const process = [
         ))}
       </div>
       <p style="margin-top: 34px;"><a class="text-link" href="/services/">Explore our capabilities <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <section class="section section--connections" id="integrations">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Commerce connections"
+        title="Bring orders together. Keep the operation connected."
+        copy="The final site will show every currently supported shopping cart, marketplace, and approved connection after the integration inventory is verified with Bob."
+      />
+      <div class="integration-grid" aria-label="Candidate integrations pending verification">
+        {integrationCandidates.map((integration) => (
+          <article class="integration-card">
+            <span class="integration-card__mark" aria-hidden="true">{integration.mark}</span>
+            <div><strong>{integration.name}</strong><small>Confirm support</small></div>
+          </article>
+        ))}
+      </div>
+      <p class="approval-note"><strong>Preview note:</strong> these are candidate platforms for layout review, not published integration claims. Unsupported items will be removed and verified connections added before launch.</p>
     </div>
   </section>
 
@@ -127,10 +203,22 @@ const process = [
     </div>
   </section>
 
-  <section class="quote-block">
-    <div class="container">
-      <blockquote>“A dependable fulfillment partner should make your operation feel more controlled—not less visible.”</blockquote>
-      <footer>Xpert Fulfillment operating principle</footer>
+  <section class="section testimonial-section" id="client-proof">
+    <div class="container testimonial-layout">
+      <div>
+        <p class="eyebrow eyebrow--light">Client perspective</p>
+        <h2>The strongest proof comes from the people living the operation.</h2>
+        <p>Approved client stories will show what changed, how the relationship works, and why the result mattered—not just offer a line of generic praise.</p>
+      </div>
+      <article class="testimonial-placeholder">
+        <span>Customer testimonial placeholder</span>
+        <h3>Approved client quote will appear here.</h3>
+        <p>Pair with a customer name, role, company, photo or logo, and a verified operating result after publication permission is confirmed.</p>
+        <footer>
+          <i aria-hidden="true"></i>
+          <div><strong>Client name and role</strong><small>Company • pending approval</small></div>
+        </footer>
+      </article>
     </div>
   </section>
 
